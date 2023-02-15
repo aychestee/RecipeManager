@@ -1,0 +1,58 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.padtop12 {
+    padding-top: 12px;
+}
+
+.padtop8 {
+    padding-top: 8px;
+}
+
+.padtop4 {
+    padding-top: 4px;
+}
+
+.padtop2 {
+    padding-top: 4px;
+}
+
+.width60 {
+    width: 60%;
+}
+
+.width80 {
+    width: 80%;
+}
+
+.width95pct {
+    width: 95%;
+}
+
+.width200px {
+    width:200px;
+}
+
+.width100px {
+    width: 100px;
+}

@@ -1,0 +1,49 @@
+﻿@model RecipeManager.Models.Recipe
+@{
+    ViewData["Title"] = "Add a Recipe";
+}
+<script>
+    document.getElementById('addRecipeLink').style = 'display:none';
+</script>
+<div class="padtop8">
+    <h2>Add a Recipe</h2>
+</div>
+<div class="row padtop12">
+    <div class="col-md-4 width60">
+        <form asp-action="CreateRecipe">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="2" maxlength="256"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Ingredients" class="form-label"></label>
+                <textarea asp-for="Ingredients" class="form-control" rows="8"></textarea>
+                <span asp-validation-for="Ingredients" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Directions" class="form-label"></label>
+                <textarea asp-for="Directions" class="form-control" rows="8"></textarea>
+                <span asp-validation-for="Directions" class="text-danger"></span>
+            </div>
+            <div class="mb-3 padtop12">
+                <input type="submit" value="Add Recipe" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="padtop4">
+    <a asp-action="Index">&lt; Back to Recipes</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

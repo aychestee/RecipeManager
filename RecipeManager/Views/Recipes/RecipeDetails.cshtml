@@ -1,0 +1,35 @@
+﻿@model RecipeManager.Models.Recipe
+@{
+    ViewData["Title"] = "Recipe Details";
+}
+<div class="padtop8">
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+</div>
+<div>
+    <dl class="row padtop12">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            <textarea class="form-control width60" readonly rows="2">@Html.DisplayFor(model => model.Description)</textarea>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+        <dd class="col-sm-10">
+            <textarea class="form-control width60" readonly rows="8">@Html.DisplayFor(model => model.Ingredients)</textarea>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Directions)
+        </dt>
+        <dd class="col-sm-10">
+            <textarea class="form-control width60" readonly rows="8">@Html.DisplayFor(model => model.Directions)</textarea>
+        </dd>
+    </dl>
+</div>
+<div class="mb-3 padtop12">
+    <a asp-action="EditRecipe" asp-route-id="@Model.Id" class="btn btn-primary">Edit this Recipe</a>
+</div>
+<div class="padtop4">
+    <a asp-action="Index">&lt; Back to Recipes</a>
+</div>

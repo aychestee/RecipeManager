@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RecipeManager.Models.Recipe>
+@{
+    ViewData["Title"] = "My Recipes";
+}
+<div class="padtop8">
+    <h2>My Recipes</h2>
+</div>
+@if (Model.Count() == 0)
+{
+    <div class="mb-3 padtop12">
+        <a asp-action="CreateRecipe" class="btn btn-primary">+ Add a Recipe</a>
+    </div>
+    <script>
+        document.getElementById('addRecipeLink').style = 'display:none';
+    </script>
+}
+else
+{
+    <div class="padtop12">
+        <table class="table table-striped table-borderless width80">
+            <thead>
+                <tr>
+                    <th scope="col" class="width200px">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th scope="col" class="width100px">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            @if (item.Name.Length > 25 && !item.Name.Contains(" "))
+                            {
+                                <a asp-action="RecipeDetails" asp-route-id="@item.Id" title="@item.Name">@item.Name.Remove(25)...</a>
+                            }
+                            else
+                            {
+                                <a asp-action="RecipeDetails" asp-route-id="@item.Id">@item.Name</a>
+                            }
+                        </th>
+                        <td>
+                            <textarea class="form-control width95pct" readonly rows="2">@item.Description</textarea>
+                        </td>
+                        <td>
+                            <a asp-action="EditRecipe" asp-route-id="@item.Id" title="Edit this Recipe"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <span style="padding-left:20px;">&nbsp;</span>
+                            <a asp-action="DeleteRecipe" asp-route-id="@item.Id" title="Delete this Recipe"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
